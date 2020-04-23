@@ -206,14 +206,14 @@ begin
 
     FbmpBackground.Canvas.Font.Size := 20;
     FbmpBackground.Canvas.Fill.Color := TAlphaColorRec.Red;
-    DrawTextOnCanvas(FbmpBackground.Canvas, '2.0°C', LCenter - PointF(0, LTwoDegreeRadius));
-    DrawTextOnCanvas(FbmpBackground.Canvas, '1.5°C', LCenter - PointF(0, LOnePointFiveDegreeRadius));
+    DrawTextOnCanvas(FbmpBackground.Canvas, '2.0Â°C', LCenter - PointF(0, LTwoDegreeRadius));
+    DrawTextOnCanvas(FbmpBackground.Canvas, '1.5Â°C', LCenter - PointF(0, LOnePointFiveDegreeRadius));
 
     FbmpBackground.Canvas.Fill.Color := FEdHawkinsWhite;
     FbmpBackground.Canvas.Stroke.Color := FEdHawkinsWhite;
     // FbmpBackground.Canvas.DrawArc(LCenter, PointF(LZeroDegreeRadius, LZeroDegreeRadius), 295, 310, 1);
     FbmpBackground.Canvas.DrawArc(LCenter, PointF(LZeroDegreeRadius, LZeroDegreeRadius), 294, 312, 1);
-    DrawTextOnCanvas(FbmpBackground.Canvas, '0.0°C', LCenter - PointF(0, LZeroDegreeRadius - 5));
+    DrawTextOnCanvas(FbmpBackground.Canvas, '0.0Â°C', LCenter - PointF(0, LZeroDegreeRadius - 5));
 
     for i := 1 to 12 do
     begin
@@ -277,6 +277,8 @@ var
   LLines: TStringDynArray;
   LColumns: TStringList;
 begin
+  FormatSettings.DecimalSeparator := '.'; // For regions that don't use a period as a decimal
+  
   LLines := TFile.ReadAllLines(AFilename);
   SetLength(FData, Length(LLines));
   LColumns := TStringList.Create;
